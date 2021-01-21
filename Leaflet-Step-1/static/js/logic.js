@@ -28,30 +28,31 @@ d3.json(queryURL, function(data) {
     var Time = FeaturesArray[i].properties.time
     var Magnitude = FeaturesArray[i].properties.mag
 
+
    // Define a markerSize function that will give each record a different radius based on magnitude degree
     function markerSize(magnitude) {
     return magnitude * 10000;
    }
   
  
-    // Determine color options for each magnitude segmennt
+    // Determine color options for each magnitude segment
     var color = "";
     if (Magnitude <= 1) {
-         color = " #ffff33"
+         color = " PaleGreen"
     }
     else if (Magnitude <= 2) {
-         color = " #e6e600"
+         color = " GreenYellow"
     }
     else if (Magnitude <= 3) {
-        color = " #b3b300"
+        color = " Lime"
     }
     else if (Magnitude <= 4) {
-         color = "  #808000"
+         color = " LimeGreen"
     }
     else if (Magnitude <= 5) {
-        color = "  #808000"
+        color = " Olive"
    }
-    else { color = "#4d4d00"}    
+    else { color = "ForestGreen"}    
    
     L.circle([Coordinates[1], Coordinates[0]], {
         fillOpacity: 0.75,
@@ -61,7 +62,7 @@ d3.json(queryURL, function(data) {
         fillColor: color,
         radius: markerSize(Magnitude)
        }). bindPopup("<h3>" + Place+
-      "</h3><hr><p>" + new Date(Time) + "</p>").addTo(myMap);
+      "</h3><hr><p>" + new Date(Time) + "</p><hr><h3>Magnitude: " + Magnitude + "</h3>").addTo(myMap);
    
 
   }
