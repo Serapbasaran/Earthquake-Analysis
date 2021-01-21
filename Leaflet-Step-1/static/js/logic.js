@@ -43,12 +43,18 @@ d3.json(queryUrl, function(data) {
          color = "  #808000"
     }
     else { color = "#4d4d00"}    
-        
+   
+    L.circle([Coordinates[1], Coordinates[0]], {
+        fillOpacity: 0.75,
+        color: "white",
+        stroke: True,
+        weight: 0.5,
+        fillColor: color,
+        radius: Size 
+       }). bindPopup("<h3>" + Place+
+      "</h3><hr><p>" + new Date(Time) + "</p>").addTo(myMap);
+   
 
-
-
-
-    
   }
 });
 
