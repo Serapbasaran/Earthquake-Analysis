@@ -9,7 +9,15 @@ d3.json(queryUrl, function(data) {
     createFeatures(data.features);
   });
 
+// Create a map object
+var myMap = L.map("map", {
+    center: [15.5994, -28.6731], 
+    zoom: 5
+  });
   
+
+
+
 function createFeatures(earthquakeData) {
 
     // Define a function we want to run once for each feature in the features array
