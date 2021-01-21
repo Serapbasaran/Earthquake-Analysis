@@ -25,8 +25,30 @@ d3.json(queryUrl, function(data) {
     var FeaturesArray = data.features
     for (var i = 0; i < FeaturesArray.length; i++) {
     var Coordinates = FeaturesArray[i].geometry.coordinates
+    var Place = FeaturesArray[i].properties.place
     var Time = FeaturesArray[i].properties.time
     var Magnitude = FeaturesArray[i].properties.mag
-
+    var Size = Magnitude*10000
+    var color = "";
+    if (Size > 10000) {
+         color = " #ffff33"
+    }
+    else if (Size > 20000) {
+         color = " #e6e600"
+    }
+    else if (Size > 30000) {
+        color = " #b3b300"
+    }
+    else if (Size > 40000) {
+         color = "  #808000"
+    }
+    else { color = "#4d4d00"}    
         
+
+
+
+
+    
+  }
+});
 
