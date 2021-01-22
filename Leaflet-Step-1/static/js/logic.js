@@ -52,7 +52,7 @@ d3.json(queryURL, function(data) {
     else if (magnitude >1) {
         return " GreenYellow"
    }
-    else { return "PaleGreen"}    
+    else { return "LightGreen"}    
 
   } 
    
@@ -72,7 +72,7 @@ d3.json(queryURL, function(data) {
   legend.onAdd = function(myMap) {
     var div = L.DomUtil.create("div", "info legend");
     var magRange = [0,1,2,3,4,5];
-    var labels = ['<strong>Magnitude</strong>']
+    var labels = ['<p>Magnitude</p>']
  
     // Loop through the intervals and generate a label 
     for (var i = 0; i < magRange.length; i++) {
