@@ -36,34 +36,55 @@ d3.json(queryURL, function(data) {
   
  
     // Determine color options for each magnitude segment
-    var color = "";
+    function markerColor(magnitude){
     if (Magnitude <= 1) {
-         color = " PaleGreen"
+        return " PaleGreen"
     }
     else if (Magnitude <= 2) {
-         color = " GreenYellow"
+         return  " GreenYellow"
     }
     else if (Magnitude <= 3) {
-        color = " Lime"
+        return " Lime"
     }
     else if (Magnitude <= 4) {
-         color = " LimeGreen"
+         return " LimeGreen"
     }
     else if (Magnitude <= 5) {
-        color = " Olive"
+        return " Olive"
    }
-    else { color = "ForestGreen"}    
+    else { return "ForestGreen"}    
+
+  } 
    
     L.circle([Coordinates[1], Coordinates[0]], {
         fillOpacity: 0.75,
         color: "white",
         stroke: true,
         weight: 0.5,
-        fillColor: color,
+        fillColor: markerColor(Magnitude),
         radius: markerSize(Magnitude)
        }). bindPopup("<h3>" + Place+
       "</h3><hr><p>" + new Date(Time) + "</p><hr><h3>Magnitude: " + Magnitude + "</h3>").addTo(myMap);
    
+  // Set up the legend
+  var legend = L.control({ position: "bottomright" });
+  legend.onAdd = function(myMap) {
+    var div = L.DomUtil.create("div", "info legend");
+        limits = [0,1,2,3,4,5];
+        labels = [];
+
+    for (var i = 0; i < limits.length; i++) {
+          div.innerHTML +=
+              '<i style="background:' + markerColor(limits[i] + 1) + '"></i> ' +
+              limits[i] + (limits[i + 1] ? '&ndash;' + limits[i + 1] + '<br>' : '+');
+  
+    };
+
+    return div;
+   
+  };
+  // Adding legend to the map
+  legend.addTo(myMap);
 
   }
 });
