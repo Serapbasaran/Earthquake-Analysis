@@ -37,22 +37,22 @@ d3.json(queryURL, function(data) {
  
     // Determine color options for each magnitude segment
     function markerColor(magnitude){
-    if (Magnitude <= 1) {
-        return " PaleGreen"
+    if (magnitude >5) {
+        return " ForestGreen"
     }
-    else if (Magnitude <= 2) {
-         return  " GreenYellow"
+    else if (magnitude >4) {
+         return  " Olive"
     }
-    else if (Magnitude <= 3) {
-        return " Lime"
+    else if (magnitude > 3) {
+        return " LimeGreen"
     }
-    else if (Magnitude <= 4) {
-         return " LimeGreen"
+    else if (magnitude >2) {
+         return " Lime"
     }
-    else if (Magnitude <= 5) {
-        return " Olive"
+    else if (magnitude >1) {
+        return " GreenYellow"
    }
-    else { return "ForestGreen"}    
+    else { return "PaleGreen"}    
 
   } 
    
@@ -68,21 +68,23 @@ d3.json(queryURL, function(data) {
    
   // Set up the legend
   var legend = L.control({ position: "bottomright" });
+
   legend.onAdd = function(myMap) {
     var div = L.DomUtil.create("div", "info legend");
-        limits = [0,1,2,3,4,5];
-        labels = [];
+    var magRange = [0,1,2,3,4,5];
+    var labels = ['<strong>Magnitude</strong>']
+ 
+    // Loop through the intervals and generate a label 
+    for (var i = 0; i < magRange.length; i++) {
+      div.innerHTML +=
+      '<i style="background:' + markerColor(magRange[i]) + '"></i> ' +
+      magRange[i] + (magRange[i+1] ? '&ndash;' + magRange[i+1] + '<br>': '+');
+      
+    }
+      return div;
 
-    for (var i = 0; i < limits.length; i++) {
-          div.innerHTML +=
-              '<i style="background:' + markerColor(limits[i] + 1) + '"></i> ' +
-              limits[i] + (limits[i + 1] ? '&ndash;' + limits[i + 1] + '<br>' : '+');
-  
-    };
-
-    return div;
-   
   };
+
   // Adding legend to the map
   legend.addTo(myMap);
 
