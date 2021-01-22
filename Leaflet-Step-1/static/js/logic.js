@@ -81,6 +81,9 @@ d3.json(queryURL, function(data) {
       magRange[i] + (magRange[i+1] ? '&ndash;' + magRange[i+1] + '<br>': '+');
       
     }
+    div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+
+
       return div;
 
   };
