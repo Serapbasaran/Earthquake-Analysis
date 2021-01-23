@@ -70,9 +70,9 @@ d3.json(queryURL, function(data) {
   var legend = L.control({ position: "bottomright" });
 
   legend.onAdd = function(myMap) {
-    var div = L.DomUtil.create("div", "info legend");
+    var div = L.DomUtil.create("div", "legend");
     var magRange = [0,1,2,3,4,5];
-    var labels = ['<p>Magnitude</p>']
+    var labels = []
  
     // Loop through the intervals and generate a label 
     for (var i = 0; i < magRange.length; i++) {
@@ -81,8 +81,8 @@ d3.json(queryURL, function(data) {
       magRange[i] + (magRange[i+1] ? '&ndash;' + magRange[i+1] + '<br>': '+');
       
     }
-    div.innerHTML += "<ul>" + labels.join("") + "</ul>";
-
+    
+    div.innerHTML += '<h6 style="font-size: 100%">Magnitude</h6>'; 
 
       return div;
 
