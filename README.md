@@ -13,3 +13,4 @@
 
 * Create a legend that will provide context for your map data.
 
+![alt text](https://github.com/Serapbasaran/leaflet-challenge/blob/main/Images/Screenshot%202021-04-28%20183712.png)
