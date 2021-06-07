@@ -1,4 +1,4 @@
-# leaflet-challenge
+# Leaflet Earthquake Analysis
 
 ## Eartquake Map Visualization
 
